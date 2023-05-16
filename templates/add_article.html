@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Добавить статью</h1>
+        <form action="{{ url_for('add_article') }}" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Заголовок:</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Содержание:</label>
+                <textarea id="content" name="content" rows="5" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Удалить статью</h1>
+        <form action="{{ url_for('delete_article', article_id=article.id) }}" method="POST">
+            <p>Вы действительно хотите удалить следующую статью?</p>
+            <p><strong>Заголовок:</strong> {{ article.title }}</p>
+            <p><strong>Содержание:</strong></p>
+            <p>{{ article.content }}</p>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-danger" value="Удалить">
+            </div>
+        </form>
+    </div>
+{% endblock %}

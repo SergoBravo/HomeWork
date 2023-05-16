@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="article">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.content }}</p>
+    <p>Автор: <a href="{{ url_for('profile', user_id=article.user_id) }}">{{ article.author }}</a></p>
+    <hr>
+  </div>
+
+  <div class="comments">
+    <h3>Комментарии:</h3>
+    {% for comment in article.comments %}
+        <div class="comment">
+            <p>{{ comment.content }}</p>
+            <p>Автор комментария: <a href="{{ url_for('profile', user_id=comment.user_id) }}">{{ comment.author }}</a></p>
+        </div>
+    {% endfor %}
+  </div>
+
+  <div class="add-comment">
+    <h4>Добавить комментарий:</h4>
+    <form action="{{ url_for('add_comment', article_id=article.id) }}" method="post">
+      <textarea name="content" placeholder="Введите комментарий" required></textarea>
+      <button type="submit">Добавить</button>
+    </form>
+  </div>
+{% endblock %}
+

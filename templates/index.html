@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Добро пожаловать!</h1>
+        {% if username %}
+            <p>Вы вошли как: {{ username }}</p>
+            {% if articles %}
+                <h2>Список статей:</h2>
+                <ul class="list-group">
+                    {% for article in articles %}
+                        <li class="list-group-item">
+                            <h3>{{ article.title }}</h3>
+                            <p>{{ article.content }}</p>
+                            <p>Автор: {{ article.author }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Статей пока нет.</p>
+            {% endif %}
+        {% else %}
+            <p>Пожалуйста, войдите или зарегистрируйтесь.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
